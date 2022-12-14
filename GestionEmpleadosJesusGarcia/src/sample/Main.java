@@ -2,6 +2,7 @@ package sample;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -16,6 +17,8 @@ public class Main extends Application {
         this.primaryStage = primaryStage;
         //Título del primarystage
         this.primaryStage.setTitle("Gestión de empleados");
+        //Icono de la app
+        this.primaryStage.getIcons().add(new Image("file:images/icono.png"));
         //2) Inicialización del rootlayout mediante un método
         initRootLayout();
         //3) Mostrar la vista de EmployeeOperations

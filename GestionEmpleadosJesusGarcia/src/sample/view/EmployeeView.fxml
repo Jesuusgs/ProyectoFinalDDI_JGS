@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="344.0" prefWidth="600.0" style="-fx-background-color: #e2fff3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.EmployeeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="344.0" prefWidth="613.0" style="-fx-background-color: #e2fff3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.EmployeeController">
    <children>
       <TextField fx:id="empIdText" layoutX="193.0" layoutY="41.0" prefHeight="25.0" prefWidth="67.0" promptText="Emp ID" />
       <Label layoutX="194.0" layoutY="21.0" text="Emp ID" />
@@ -36,7 +36,7 @@
       </VBox>
       <Separator layoutY="14.0" prefHeight="4.0" prefWidth="600.0" />
       <Separator layoutX="180.0" layoutY="14.0" orientation="VERTICAL" prefHeight="333.0" prefWidth="7.0" />
-      <TableView fx:id="employeeTable" editable="true" layoutX="193.0" layoutY="102.0" prefHeight="234.0" prefWidth="393.0" style="-fx-background-color: #b4fcbe;" tableMenuButtonVisible="true">
+      <TableView fx:id="employeeTable" editable="true" layoutX="193.0" layoutY="102.0" prefHeight="234.0" prefWidth="412.0" style="-fx-background-color: #b4fcbe;" tableMenuButtonVisible="true">
         <columns>
             <TableColumn fx:id="empIdColumn" prefWidth="57.0" text="Id" />
           <TableColumn fx:id="empNameColumn" prefWidth="75.0" text="Nombre" />

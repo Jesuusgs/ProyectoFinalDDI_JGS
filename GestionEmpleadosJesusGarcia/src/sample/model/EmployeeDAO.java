@@ -5,6 +5,7 @@ import sample.util.DBUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 
 public class EmployeeDAO {
 
@@ -129,13 +130,16 @@ public class EmployeeDAO {
         //El IDNEW será el id que tendrá el empleado nuevo
         int idNew = seleccionarUltId() + 1;
         System.out.println(seleccionarUltId());
+        //genera un teléfono aleatorio para que al consultar el nuevo empleado insertado no se le quede vacía la caja de teléfono en la tabla
+        int telf = (int) ((Math.random()*((99999999-10000000)+1))+10000000);
+        String telephone = "6" + telf;
 
         String updateStmt =
                 "BEGIN\n" +
                         "INSERT INTO employees\n" +
-                        "(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, HIRE_DATE, JOB_ID)\n" +
+                        "(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, HIRE_DATE, JOB_ID)\n" +
                         "VALUES\n" +
-                        "('" + idNew+ "', '"+name+"', '"+lastname+"', '"+email+"', SYSDATE, 'IT_PROG');\n" +
+                        "('" + idNew+ "', '"+name+"', '"+lastname+"', '"+email+"', '" + telephone + "', SYSDATE, 'IT_PROG');\n" +
                         "END;";
 
         try {

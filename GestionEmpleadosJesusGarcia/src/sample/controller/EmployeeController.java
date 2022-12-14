@@ -51,10 +51,9 @@ public class EmployeeController {
             Employee emp = EmployeeDAO.searchEmployee(empIdText.getText());
             //Cargar el empleado en la tabla
             populateAndShowEmployee(emp);
+            cleanComponents();
         } catch (SQLException e) {
-            e.printStackTrace();
             resultArea.setText("Se ha producido un error al recuperar el empleado de la base de datos.\n" + e);
-            throw e;
         }
     }
 
@@ -66,9 +65,9 @@ public class EmployeeController {
             ObservableList<Employee> empData = EmployeeDAO.searchEmployees();
             //Mostrarlos en la tabla
             populateEmployees(empData);
+            cleanComponents();
         } catch (SQLException e){
-            System.out.println("Se ha producido un error al recuperar los empleados de la base de datos.\n" + e);
-            throw e;
+            System.out.println("Se ha producido un error al recuperar los empleados de la base de datos.\n" +e);
         }
     }
 
@@ -107,9 +106,18 @@ public class EmployeeController {
         if (emp != null) {
             populateEmployee(emp);
             setEmpInfoToTextArea(emp);
+            cleanComponents();
         } else {
             resultArea.setText("Este empleado no existe\n");
         }
+    }
+
+    private void cleanComponents() {
+        empIdText.setText("");
+        newEmailText.setText("");
+        nameText.setText("");
+        emailText.setText("");
+        surnameText.setText("");
     }
 
     @FXML
@@ -123,9 +131,10 @@ public class EmployeeController {
     private void updateEmployeeEmail (ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         try {
             EmployeeDAO.updateEmpEmail(empIdText.getText(),newEmailText.getText());
+            cleanComponents();
             resultArea.setText("El email del empleado con ID " + empIdText.getText() + " ha sido actualizado correctamente.\n");
         } catch (SQLException e) {
-            resultArea.setText("Ha ocurrido un problema al actualizar el email: " + e);
+            resultArea.setText("Ha ocurrido un problema al actualizar el email: EMP ID y NUEVO EMAIL deben contener datos.\n" + e);
         }
     }
 
@@ -134,10 +143,10 @@ public class EmployeeController {
     private void insertEmployee (ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         try {
             EmployeeDAO.insertEmp(nameText.getText(),surnameText.getText(),emailText.getText());
+            cleanComponents();
             resultArea.setText("El empleado ha sido insertado correctamente \n");
         } catch (SQLException e) {
-            resultArea.setText("Ha ocurrido un problema en la inserción del empleado " + e);
-            throw e;
+            resultArea.setText("Ha ocurrido un problema en la inserción del empleado: Todos los campos deben estar rellenos y el email no puede coincidir con uno ya existente.\n" + e);
         }
     }
 
@@ -147,9 +156,9 @@ public class EmployeeController {
         try {
             EmployeeDAO.deleteEmpWithId(empIdText.getText());
             resultArea.setText("El empleado con id : " + empIdText.getText() + " ha sido eliminado correctamente.\n");
+            cleanComponents();
         } catch (SQLException e) {
-            resultArea.setText("Ha ocurrido un problema al eliminar al empleado. " + e);
-            throw e;
+            resultArea.setText("Ha ocurrido un problema al eliminar al empleado. El ID debe existir en la base de datos y debe estar escrito en el campo EMP ID.\n" + e);
         }
     }
 }
